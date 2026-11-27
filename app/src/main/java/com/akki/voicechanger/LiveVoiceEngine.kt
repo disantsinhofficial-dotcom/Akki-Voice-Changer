@@ -25,7 +25,9 @@ class LiveVoiceEngine(context: Context) {
         if (active.get()) return
         require(pitchRatio in 0.75f..1.55f) { "Unsupported pitch preset" }
 
-        val sampleRate = 44100
+        // 32 kHz keeps the highest preset (1.38x = 44.16 kHz) inside the
+        // common Android AudioTrack playback-rate range.
+        val sampleRate = 32000
         val minIn = AudioRecord.getMinBufferSize(
             sampleRate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT
         )
