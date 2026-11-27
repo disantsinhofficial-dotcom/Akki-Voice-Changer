@@ -1,19 +1,18 @@
 # Akki Voice Changer
 
-An Android-first, offline voice conversion project.
+Android offline voice-effects app.
 
-## Project status
+## Current build
 
-This repository is being initialized. The first milestone is a buildable Android application shell and audio-engine foundation. Real-time voice conversion and calling support must be validated on target hardware before being described as supported.
+The current implementation adds an experimental live microphone pitch monitor with four selectable pitch presets. It processes PCM locally with Android AudioRecord/AudioTrack and does not upload microphone audio.
 
-## Important Android limitation
+## Important limitations
 
-Standard non-rooted Android apps generally cannot replace the microphone uplink audio in ordinary cellular SIM calls. Internet calling can only be supported when the call is handled inside this app (or through a compatible calling integration).
+- Pitch shifting changes both pitch and playback speed. It is not an AI female-voice conversion model and does not reproduce a natural female vocal timbre.
+- This initial live monitor is intended for foreground use and headphones are recommended to prevent acoustic feedback.
+- Converted recording/export, downloaded local AI voice models, neural real-time conversion, and in-app VoIP calling are not implemented yet.
+- A normal non-rooted Android app generally cannot replace the microphone uplink in ordinary cellular SIM calls. Do not expect SIM-call voice changing.
 
-## Planned milestones
+## Build
 
-1. Buildable Android app and permission/audio-device diagnostics.
-2. Local voice profile/model management and preview pipeline.
-3. Low-latency offline voice conversion, measured on real devices.
-4. In-app internet calling integration, separately validated.
-5. Device compatibility testing and release builds.
+Open in Android Studio or run `gradle assembleDebug` with JDK 17 and Android SDK 35.
